@@ -193,7 +193,7 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ \
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 export KBUILD_BUILDHOST := $(SUBARCH)
 ARCH		?=arm
-CROSS_COMPILE	?=../PLATFORM/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-
+CROSS_COMPILE	?=/home/rick/development/android_toolchains/hyper-toolchains-arm-eabi-5.x-LxSM/bin/arm-eabi-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
@@ -347,6 +347,7 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
+KERNELFLAGS	= -O3 -mtune=cortex-a7 -mcpu=cortex-a7 -mfpu=neon-vfpv3 -fgraphite -fgraphite-identity -floop-parallelize-all -ftree-loop-linear  -floop-interchange -floop-block -floop-flatten	  		  		  
 CFLAGS_MODULE   =
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
